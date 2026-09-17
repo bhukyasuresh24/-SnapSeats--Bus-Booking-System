@@ -1,0 +1,73 @@
+create database snapseats_database;
+
+create table user(
+email varchar(50),
+password varchar(50),
+name varchar(50),
+contact varchar(10),
+primary key(email)
+);
+
+create table admin(
+email varchar(50),
+password varchar(50),
+primary key(email)
+);
+
+create table buses(
+bus_no varchar(50),
+bus_name varchar(50),
+total_seats int,
+primary key(bus_no)
+);
+
+create table route(
+route_id int AUTO_INCREMENT,
+src varchar(50),
+dest varchar(50),
+journey_date date,
+fare int,
+distance int,
+journey_time varchar(50),
+bus_no varchar(50),
+primary key (route_id),
+foreign key (bus_no) references buses(bus_no)
+);
+
+create table bookings(
+booking_id int auto_increment,
+bus_no varchar(50),
+seat_no varchar(50),
+route_id int,
+email varchar(50),
+primary key(booking_id),
+foreign key (bus_no) references buses(bus_no),
+foreign key (email) references user(email),
+foreign key (route_id) references route(route_id)
+);
+
+
+insert into admin values('admin@1','pass1');
+insert into admin values('admin@2','pass2');
+
+insert into user values('user@1','pass1','sai','1234567809');
+insert into user values('user@2','pass2','ramesh','1234527809');
+insert into user values('user@3','pass3','suresh','9434567809');
+insert into user values('user@4','pass4','mukesh','8534567809');
+
+insert into buses values('B0001','Bharat Benz',40);
+insert into buses values('B0002','Bharat Benz',40);
+insert into buses values('B0003','Bharat Benz',40);
+insert into buses values('B0004','Bharat Benz',40);
+insert into buses values('B0005','Orange Travels',40);
+insert into buses values('B0006','Orange Travels',40);
+insert into buses values('B0007','Orange Travels',40);
+insert into buses values('B0008','Ola Travels',40);
+
+insert into route(src,dest,journey_date,fare,distance,journey_time,bus_no)
+ values('mumbai','delhi','2024-01-27',110,1450,'23.6','B0001');
+
+
+
+
+

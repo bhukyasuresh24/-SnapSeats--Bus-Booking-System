@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+    <title>SnapSeats</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: url("https://r4.wallpaperflare.com/wallpaper/921/988/30/mercedes-benz-autonomous-electric-bus-future-bus-wallpaper-d846ec5a6f7c87a91ea049f212899b20.jpg") no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      backdrop-filter:blur(5px);
+            /* margin: 0; */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bus-form {
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust transparency here */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px; /* Adjust the maximum width of the form */
+            width: 100%;
+        }
+        .center-btn {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+  <div>
+    <nav class="navbar py-2" style="background-color: rgba(255, 255, 255, 0.8);border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <form action="/logout" method="post">
+          <button class="btn btn-outline-success">LogOut</button>
+       
+        </form>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Admin Page</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="/admin">Buses Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/updatebus">Add new Bus</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/admin/seatingplanbybus">Seating Plan</a>
+              </li>
+             
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+<div style="padding: 10%;" >
+  <form action="/add_bus" method="post">
+    <div>
+      <div class="container bus-form">
+          <h2 class="text-center">Add a New Bus</h2>
+          <form>
+              <div class="mb-3">
+                  <label for="source" class="form-label">Source:</label>
+                  <input type="text" class="form-control" id="source" name="source" placeholder="Enter source">
+              </div>
+  
+              <div class="mb-3">
+                  <label for="destination" class="form-label">Destination:</label>
+                  <input type="text" class="form-control" id="destination" name="destination" placeholder="Enter destination">
+              </div>
+  
+              <div class="mb-3">
+                  <label for="departureTime" class="form-label">Duration Time:</label>
+                  <input type="text" class="form-control" id="departureTime" name="departureTime" placeholder="Enter duration" >
+              </div>
+  
+              <div class="mb-3">
+                  <label for="fare" class="form-label">Fare:</label>
+                  <input type="number" class="form-control" id="fare" name="fare" placeholder="Enter fare">
+              </div>
+              <div class="mb-3">
+                <label for="bus_no" class="form-label">Bus-Number:</label>
+                <input type="text" class="form-control" id="fare" name="bus_no" placeholder="Enter bus_no">
+            </div>
+            <div class="mb-3">
+              <label for="dist" class="form-label">Distance:</label>
+              <input type="number" class="form-control" id="fare" name="dist" placeholder="Enter distance">
+          </div>
+              <div class="mb-3">
+                 <label for="date" class="form-label">Date</label>
+                  <input type="date" class="form-control" name="date" id="">
+              </div>
+  
+              <div class="mb-3 center-btn">
+                 <button type="submit" class="btn btn-primary" >ADD</button>
+              </div>            
+          </form>
+      </div>
+  </div>
+
+
+  </form>
+ 
+</div>
+      
+
+      
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+
+</html>
